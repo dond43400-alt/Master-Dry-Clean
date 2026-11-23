@@ -22,7 +22,65 @@
   </head>
   <body class="bg-slate-50 text-slate-900 antialiased font-sans">
     <div id="root"></div>
+    <noscript>
+      <div style="padding:24px;font-family:system-ui,sans-serif;text-align:center;">
+        Please enable JavaScript to run Master Dry Clean AI.
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function () {
+        var shown = false;
+        function showFallback(reason) {
+          if (shown || window.__MDC_APP_MOUNTED__) return;
+          var root = document.getElementById('root');
+          if (!root || root.childElementCount > 0) return;
+          shown = true;
+          var wrap = document.createElement('div');
+          wrap.setAttribute('style', 'min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#f8fafc;font-family:system-ui,sans-serif;');
+          var card = document.createElement('div');
+          card.setAttribute('style', 'max-width:480px;width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;box-shadow:0 10px 25px rgba(15,23,42,0.08);text-align:center;');
+          var title = document.createElement('h1');
+          title.setAttribute('style', 'margin:0 0 8px;font-size:18px;font-weight:800;color:#0f172a;');
+          title.textContent = 'Master Dry Clean AI — Deployment Check';
+          var desc = document.createElement('p');
+          desc.setAttribute('style', 'margin:0 0 12px;font-size:13px;line-height:1.5;color:#475569;');
+          desc.textContent = reason;
+          var hint = document.createElement('p');
+          hint.setAttribute('style', 'margin:0 0 16px;font-size:12px;line-height:1.5;color:#64748b;background:#f1f5f9;padding:10px 12px;border-radius:10px;text-align:left;');
+          hint.textContent = 'GitHub Pages fix: In your GitHub repository go to Settings → Pages → Build and deployment → Source, select "GitHub Actions", and re-run the deploy workflow (or run "npm run build" and publish only the dist/ folder).';
+          var btn = document.createElement('button');
+          btn.setAttribute('type', 'button');
+          btn.setAttribute('style', 'padding:10px 16px;border-radius:10px;border:none;background:#0284c7;color:#fff;font-size:13px;font-weight:700;cursor:pointer;');
+          btn.textContent = 'Reload Page';
+          btn.onclick = function () {
+            if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.getRegistrations().then(function (regs) {
+                return Promise.all(regs.map(function (r) { return r.unregister(); }));
+              }).finally(function () { window.location.reload(); });
+            } else {
+              window.location.reload();
+            }
+          };
+          card.appendChild(title);
+          card.appendChild(desc);
+          card.appendChild(hint);
+          card.appendChild(btn);
+          wrap.appendChild(card);
+          root.appendChild(wrap);
+        }
+        window.addEventListener('error', function (ev) {
+          if (window.__MDC_APP_MOUNTED__) return;
+          var msg = ev && ev.message ? ev.message : 'App bundle failed to load.';
+          showFallback(msg);
+        }, true);
+        setTimeout(function () {
+          if (!window.__MDC_APP_MOUNTED__) {
+            showFallback('The compiled app bundle did not load. This usually happens if GitHub Pages is serving the repository root instead of the built dist/ output.');
+          }
+        }, 4000);
+      })();
+    </script>
   </body>
 </html>
 

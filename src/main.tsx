@@ -68,6 +68,8 @@ class AppErrorBoundary extends React.Component<{children: React.ReactNode}, Erro
   }
 }
 
+(window as unknown as {__MDC_APP_MOUNTED__?: boolean}).__MDC_APP_MOUNTED__ = true;
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AppErrorBoundary>

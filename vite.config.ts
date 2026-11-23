@@ -5,20 +5,20 @@ import {defineConfig} from 'vite';
 import {VitePWA} from 'vite-plugin-pwa';
 
 export default defineConfig(({command}) => {
+  const rawEnvBase = process.env.VITE_BASE_PATH?.trim();
+  const normalizedEnvBase = rawEnvBase
+    ? `${rawEnvBase.replace(/\/+$/, '')}/`
+    : undefined;
+  const base = command === 'build' ? normalizedEnvBase || './' : '/';
+
   return {
-    base: command === 'build' ? './' : '/',
+    base,
     plugins: [
       react(),
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: [
-          'apple-touch-icon.png',
-          'icon.svg',
-          'pwa-192x192.png',
-          'pwa-512x512.png',
-          'pwa-maskable-512x512.png',
-        ],
+        includeAssets: [],
         manifest: {
           id: './',
           name: 'Master Dry Clean AI',
