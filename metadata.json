@@ -1,0 +1,6 @@
+{
+  "name": "Master Dry Clean AI",
+  "description": "ਸਮਾਰਟ ਡਰਾਈ ਕਲੀਨਿੰਗ ਪ੍ਰਬੰਧਨ, ਆਟੋਮੈਟਿਕ ਬਿੱਲਿੰਗ, WhatsApp ਰਿਮਾਇੰਡਰ ਅਤੇ ਦਾਗ਼-ਧੱਬੇ ਹੱਲ - Master Dry Clean AI Assistant",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#4338ca" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#bg)" />
+  <!-- Coat Hanger Hook -->
+  <path d="M256 130c-22 0-40 18-40 40 0 11 5 21 13 28l27 22" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Hanger Shoulders & Bar -->
+  <path d="M256 220L106 318c-14 9-8 32 9 32h282c17 0 23-23 9-32L256 220z" fill="none" stroke="#ffffff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Sparkle Star -->
+  <path d="M380 120l10 26 26 10-26 10-10 26-10-26-26-10 26-10z" fill="#7dd3fc" />
+</svg>
