@@ -44,26 +44,32 @@ function deriveCustomersFromOrders(ordersList: Order[]): CustomerAccount[] {
 export default function App() {
   // Shop Settings State (persisted in localStorage)
   const [settings, setSettings] = useState<ShopSettings>(() => {
-    const saved = localStorage.getItem('mdc_settings');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {
-        console.error(e);
+    try {
+      const saved = localStorage.getItem('mdc_settings');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+          return { ...DEFAULT_SHOP_SETTINGS, ...parsed };
+        }
       }
+    } catch (e) {
+      console.error(e);
     }
     return DEFAULT_SHOP_SETTINGS;
   });
 
   // Orders State (persisted in localStorage)
   const [orders, setOrders] = useState<Order[]>(() => {
-    const saved = localStorage.getItem('mdc_orders');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {
-        console.error(e);
+    try {
+      const saved = localStorage.getItem('mdc_orders');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          return parsed;
+        }
       }
+    } catch (e) {
+      console.error(e);
     }
     return SAMPLE_ORDERS;
   });
